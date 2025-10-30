@@ -10,4 +10,5 @@
     "source.organizeImports": "explicit",
     "source.fixAll.eslint": "explicit"
   },
+  "material-icon-theme.activeIconPack": "nest",
 }

@@ -18,6 +18,7 @@ import {
   ZodValidationPipe,
 } from 'nestjs-zod';
 import { ZodError } from 'zod';
+import { AuthModule } from './auth/auth.module';
 import { CreateAccountController } from './controllers/create-account.controller';
 import { envSchema } from './env';
 import { PrismaService } from './prisma/prisma.service';
@@ -45,6 +46,7 @@ class HttpExceptionFilter extends BaseExceptionFilter {
       validate: (env) => envSchema.parse(env),
       isGlobal: true,
     }),
+    AuthModule,
   ],
   controllers: [CreateAccountController],
   providers: [
