@@ -1,9 +1,10 @@
-import 'dotenv/config';
-
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import 'dotenv/config';
 import { cleanupOpenApiDoc } from 'nestjs-zod';
 import { AppModule } from './app.module';
+import { Env } from './env';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,7 +20,10 @@ async function bootstrap() {
 
   SwaggerModule.setup('api', app, cleanupOpenApiDoc(openApiDoc));
 
-  await app.listen(process.env.PORT ?? 3333);
+  const configService = app.get<ConfigService<Env, true>>(ConfigService);
+  const port = configService.get('PORT', { infer: true });
+
+  await app.listen(port);
 }
 
 bootstrap();
