@@ -15,6 +15,7 @@ async function bootstrap() {
       .setTitle('Forum API')
       .setDescription('App for asking and answering questions')
       .setVersion('1.0')
+      .addBearerAuth()
       .build(),
   );
 
