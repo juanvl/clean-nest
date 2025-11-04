@@ -1,11 +1,10 @@
 import {
-  Controller,
-  Post,
-  HttpCode,
   Body,
   ConflictException,
+  Controller,
+  HttpCode,
+  Post,
 } from '@nestjs/common';
-import { ApiOperation } from '@nestjs/swagger';
 import { hash } from 'bcryptjs';
 import { createZodDto } from 'nestjs-zod';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -25,7 +24,6 @@ export class CreateAccountController {
 
   @Post()
   @HttpCode(201)
-  @ApiOperation({ summary: 'Create a new user account' })
   async handle(@Body() body: CreateAccountDTO) {
     const { name, email, password } = body;
 
