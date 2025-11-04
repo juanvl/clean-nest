@@ -40,4 +40,8 @@ describe('Authenticate (E2E)', () => {
       accessToken: expect.any(String),
     });
   });
+
+  afterAll(async () => {
+    await app.close();
+  });
 });

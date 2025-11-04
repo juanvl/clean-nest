@@ -37,4 +37,8 @@ describe('Create Account (E2E)', () => {
 
     expect(userOnDatabase).toBeTruthy();
   });
+
+  afterAll(async () => {
+    await app.close();
+  });
 });

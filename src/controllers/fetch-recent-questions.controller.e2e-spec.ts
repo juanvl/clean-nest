@@ -64,4 +64,8 @@ describe('Fetch recent questions (E2E)', () => {
       ],
     });
   });
+
+  afterAll(async () => {
+    await app.close();
+  });
 });
